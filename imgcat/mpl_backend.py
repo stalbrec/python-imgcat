@@ -4,6 +4,7 @@ import types
 
 from matplotlib._pylab_helpers import Gcf
 from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.backend_bases import (
      FigureCanvasBase, FigureManagerBase, GraphicsContextBase, RendererBase)
 
@@ -33,12 +34,10 @@ def new_figure_manager(num, *args, **kwargs):
 
 def new_figure_manager_given_figure(num, figure):
     # this must be lazy-loaded to avoid unwanted configuration of mpl backend
-    from matplotlib.backends.backend_agg import FigureCanvasAgg
-
     canvas = FigureCanvasAgg(figure)
     manager = FigureManagerImgcat(canvas, num)
     return manager
 
 
 #FigureManager = FigureManagerImgcat
-#FigureCanvas = FigureCanvasAgg
+FigureCanvas = FigureCanvasAgg

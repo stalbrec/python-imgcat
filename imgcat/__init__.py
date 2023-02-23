@@ -13,7 +13,7 @@ from .imgcat import (
 try:
     # support module://imgcat backend
     from .mpl_backend import (
-        new_figure_manager, show
+        new_figure_manager, show, FigureCanvas
     )
 except ImportError:
     # matplotlib is not available, do nothing
